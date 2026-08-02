@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Tabata</title>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tabata" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,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" />
+  <style>
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --accent-press: #16a34a;
+  --work: #22c55e;
+  --rest: #f59e0b;
+  --setrest: #3b82f6;
+  --ready: #64748b;
+  --done: #a855f7;
+  --danger: #ef4444;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overscroll-behavior: none;
+}
+
+body {
+  padding:
+    calc(env(safe-area-inset-top) + 12px)
+    calc(env(safe-area-inset-right) + 16px)
+    calc(env(safe-area-inset-bottom) + 16px)
+    calc(env(safe-area-inset-left) + 16px);
+  min-height: 100dvh;
+}
+
+.view { display: flex; flex-direction: column; gap: 16px; min-height: 100%; }
+.hidden { display: none !important; }
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.top h1 { font-size: 34px; margin: 0; font-weight: 800; letter-spacing: -0.02em; }
+.top h2 { font-size: 20px; margin: 0; font-weight: 700; flex: 1; text-align: center; }
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 18px;
+  color: var(--text);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: transform 0.05s ease, background 0.15s ease;
+  user-select: none;
+}
+.btn:active { transform: scale(0.97); }
+.btn-accent { background: var(--accent); color: #06230f; }
+.btn-accent:active { background: var(--accent-press); }
+.btn-ghost { background: transparent; color: var(--muted); padding: 10px 12px; }
+.btn-ghost.danger { color: var(--danger); }
+.btn.big { width: 100%; padding: 20px; font-size: 22px; }
+
+.hint { color: var(--muted); text-align: center; margin-top: 40px; }
+
+/* Preset list */
+.preset-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.preset-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.preset-card .play {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  min-width: 0;
+}
+.preset-card .pname { font-size: 20px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.preset-card .pmeta { font-size: 13px; color: var(--muted); }
+.preset-card .edit {
+  background: var(--surface-2);
+  border: none;
+  color: var(--muted);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.preset-card .edit:active { transform: scale(0.95); }
+
+/* Editor */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field span { font-size: 14px; color: var(--muted); font-weight: 600; }
+.field input {
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 20px;
+  padding: 14px 16px;
+  width: 100%;
+}
+.field input:focus { outline: none; border-color: var(--accent); }
+
+.steppers { display: flex; flex-direction: column; gap: 10px; }
+.stepper {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.stepper .slabel { flex: 1; min-width: 0; }
+.stepper .slabel .name { font-size: 16px; font-weight: 700; }
+.stepper .slabel .sub { font-size: 12px; color: var(--muted); }
+.stepper .sval { font-size: 26px; font-weight: 800; min-width: 62px; text-align: center; font-variant-numeric: tabular-nums; }
+.stepper button {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  border: none;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.stepper button:active { transform: scale(0.92); background: var(--accent); color: #06230f; }
+
+/* Run screen */
+#run { justify-content: space-between; }
+.run-stage {
+  flex: 1;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.25s ease;
+  background: var(--surface);
+}
+.run-stage.ready { background: var(--ready); }
+.run-stage.work { background: var(--work); color: #06230f; }
+.run-stage.rest { background: var(--rest); color: #3d2600; }
+.run-stage.setrest { background: var(--setrest); }
+.run-stage.done { background: var(--done); }
+.run-stage.paused { filter: brightness(0.6); }
+
+.phase-label { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
+.big-time { font-size: 34vw; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.progress { font-size: 20px; font-weight: 700; opacity: 0.85; }
+.next-up { font-size: 15px; font-weight: 600; opacity: 0.7; min-height: 18px; }
+
+.run-controls { display: flex; gap: 12px; align-items: center; }
+.run-controls .btn.big { flex: 1; }
+
+</style>
+</head>
+<body>
+  <!-- HOME -->
+  <section id="home" class="view">
+    <header class="top">
+      <h1>Tabata</h1>
+      <button id="newBtn" class="btn btn-accent">＋ New</button>
+    </header>
+    <ul id="presetList" class="preset-list"></ul>
+    <p id="emptyHint" class="hint hidden">No workouts yet. Tap <b>＋ New</b> to create one.</p>
+  </section>
+
+  <!-- EDITOR -->
+  <section id="editor" class="view hidden">
+    <header class="top">
+      <button id="editorBack" class="btn btn-ghost">‹ Back</button>
+      <h2 id="editorTitle">New workout</h2>
+      <button id="deleteBtn" class="btn btn-ghost danger hidden">Delete</button>
+    </header>
+    <label class="field">
+      <span>Name</span>
+      <input id="nameInput" type="text" inputmode="text" placeholder="My workout" autocomplete="off" />
+    </label>
+    <div id="steppers" class="steppers"></div>
+    <button id="saveBtn" class="btn btn-accent big">Save</button>
+  </section>
+
+  <!-- RUN -->
+  <section id="run" class="view hidden">
+    <div id="runStage" class="run-stage">
+      <div id="phaseLabel" class="phase-label">Get Ready</div>
+      <div id="bigTime" class="big-time">0</div>
+      <div id="progress" class="progress">Rep 0/0 · Set 0/0</div>
+      <div id="nextUp" class="next-up"></div>
+    </div>
+    <div class="run-controls">
+      <button id="stopBtn" class="btn btn-ghost">Stop</button>
+      <button id="pauseBtn" class="btn btn-accent big">Pause</button>
+    </div>
+  </section>
+
+  <script>
+"use strict";
+
+/* ---------- Storage ---------- */
+const PRESETS_KEY = "tabata.presets";
+const LAST_KEY = "tabata.lastId";
+
+const DEFAULT_PRESET = {
+  name: "",
+  countdown: 10,
+  workSec: 20,
+  reps: 8,
+  restSec: 10,
+  sets: 1,
+  setRestSec: 60,
+};
+
+const FIELDS = [
+  { key: "countdown",  name: "Start countdown",   sub: "seconds",          min: 0, max: 60,  step: 5 },
+  { key: "workSec",    name: "Interval (work)",   sub: "seconds",          min: 1, max: 600, step: 5 },
+  { key: "reps",       name: "Intervals / reps",  sub: "per set",          min: 1, max: 100, step: 1 },
+  { key: "restSec",    name: "Rest between reps", sub: "seconds",          min: 0, max: 300, step: 5 },
+  { key: "sets",       name: "Sets",              sub: "repeat all reps",  min: 1, max: 50,  step: 1 },
+  { key: "setRestSec", name: "Rest between sets", sub: "seconds",          min: 0, max: 600, step: 5 },
+];
+
+function loadPresets() {
+  try {
+    const raw = localStorage.getItem(PRESETS_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+function savePresets(list) {
+  localStorage.setItem(PRESETS_KEY, JSON.stringify(list));
+}
+function newId() {
+  return "p" + Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
+}
+
+let presets = loadPresets();
+
+/* ---------- View switching ---------- */
+const views = {
+  home: document.getElementById("home"),
+  editor: document.getElementById("editor"),
+  run: document.getElementById("run"),
+};
+function show(name) {
+  for (const k in views) views[k].classList.toggle("hidden", k !== name);
+}
+
+/* ---------- Home ---------- */
+const presetList = document.getElementById("presetList");
+const emptyHint = document.getElementById("emptyHint");
+
+function fmtTime(s) {
+  if (s < 60) return s + "s";
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return r ? `${m}m${r}s` : `${m}m`;
+}
+function presetSummary(p) {
+  const parts = [`${p.reps}×${fmtTime(p.workSec)} work`];
+  if (p.restSec) parts.push(`${fmtTime(p.restSec)} rest`);
+  if (p.sets > 1) parts.push(`${p.sets} sets`);
+  return parts.join(" · ");
+}
+
+function renderHome() {
+  presetList.innerHTML = "";
+  emptyHint.classList.toggle("hidden", presets.length > 0);
+  for (const p of presets) {
+    const li = document.createElement("li");
+    li.className = "preset-card";
+
+    const play = document.createElement("div");
+    play.className = "play";
+    play.innerHTML = `<div class="pname"></div><div class="pmeta"></div>`;
+    play.querySelector(".pname").textContent = p.name || "Untitled";
+    play.querySelector(".pmeta").textContent = presetSummary(p);
+    play.addEventListener("click", () => openRun(p));
+
+    const edit = document.createElement("button");
+    edit.className = "edit";
+    edit.textContent = "Edit";
+    edit.addEventListener("click", () => openEditor(p));
+
+    li.appendChild(play);
+    li.appendChild(edit);
+    presetList.appendChild(li);
+  }
+}
+
+document.getElementById("newBtn").addEventListener("click", () => openEditor(null));
+
+/* ---------- Editor ---------- */
+const nameInput = document.getElementById("nameInput");
+const steppersEl = document.getElementById("steppers");
+const editorTitle = document.getElementById("editorTitle");
+const deleteBtn = document.getElementById("deleteBtn");
+let editing = null; // preset being edited, or null for new
+let draft = null;
+
+function clamp(v, f) {
+  return Math.max(f.min, Math.min(f.max, v));
+}
+
+function renderSteppers() {
+  steppersEl.innerHTML = "";
+  for (const f of FIELDS) {
+    const row = document.createElement("div");
+    row.className = "stepper";
+    row.innerHTML = `
+      <button type="button" aria-label="decrease">−</button>
+      <div class="slabel"><div class="name"></div><div class="sub"></div></div>
+      <div class="sval"></div>
+      <button type="button" aria-label="increase">＋</button>`;
+    row.querySelector(".name").textContent = f.name;
+    row.querySelector(".sub").textContent = f.sub;
+    const valEl = row.querySelector(".sval");
+    const update = () => { valEl.textContent = draft[f.key]; };
+    update();
+
+    const [minus, , , plus] = row.children;
+    const bump = (dir) => {
+      draft[f.key] = clamp(draft[f.key] + dir * f.step, f);
+      update();
+    };
+    holdRepeat(minus, () => bump(-1));
+    holdRepeat(plus, () => bump(1));
+    steppersEl.appendChild(row);
+  }
+}
+
+// Tap once; hold to repeat (accelerating).
+function holdRepeat(btn, fn) {
+  let timer = null;
+  let delay = 400;
+  const step = () => {
+    fn();
+    delay = Math.max(60, delay * 0.8);
+    timer = setTimeout(step, delay);
+  };
+  const start = (e) => {
+    e.preventDefault();
+    fn();
+    delay = 400;
+    timer = setTimeout(step, delay);
+  };
+  const stop = () => { if (timer) { clearTimeout(timer); timer = null; } };
+  btn.addEventListener("pointerdown", start);
+  btn.addEventListener("pointerup", stop);
+  btn.addEventListener("pointerleave", stop);
+  btn.addEventListener("pointercancel", stop);
+}
+
+function openEditor(preset) {
+  editing = preset;
+  draft = Object.assign({}, DEFAULT_PRESET, preset || {});
+  nameInput.value = preset ? preset.name : "";
+  editorTitle.textContent = preset ? "Edit workout" : "New workout";
+  deleteBtn.classList.toggle("hidden", !preset);
+  renderSteppers();
+  show("editor");
+}
+
+document.getElementById("editorBack").addEventListener("click", () => {
+  renderHome();
+  show("home");
+});
+
+document.getElementById("saveBtn").addEventListener("click", () => {
+  const name = nameInput.value.trim();
+  draft.name = name || "Workout";
+  if (editing) {
+    Object.assign(editing, draft);
+  } else {
+    editing = Object.assign({ id: newId() }, draft);
+    presets.push(editing);
+  }
+  savePresets(presets);
+  renderHome();
+  show("home");
+});
+
+deleteBtn.addEventListener("click", () => {
+  if (!editing) return;
+  if (!confirm(`Delete "${editing.name || "Workout"}"?`)) return;
+  presets = presets.filter((p) => p.id !== editing.id);
+  savePresets(presets);
+  renderHome();
+  show("home");
+});
+
+/* ---------- Audio (Web Audio, generated tones) ---------- */
+let audioCtx = null;
+function initAudio() {
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+}
+function tone(freq, durMs, when = 0, gain = 0.25) {
+  if (!audioCtx) return;
+  const t0 = audioCtx.currentTime + when;
+  const osc = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.value = freq;
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(gain, t0 + 0.01);
+  g.gain.setValueAtTime(gain, t0 + durMs / 1000 - 0.02);
+  g.gain.linearRampToValueAtTime(0, t0 + durMs / 1000);
+  osc.connect(g).connect(audioCtx.destination);
+  osc.start(t0);
+  osc.stop(t0 + durMs / 1000 + 0.02);
+}
+const beepCountdown = () => tone(880, 120);
+const beepWork = () => tone(1200, 350);
+const beepRest = () => tone(520, 350);
+const beepDone = () => { tone(1000, 180, 0); tone(1000, 180, 0.25); tone(1320, 400, 0.5); };
+
+/* ---------- Wake lock ---------- */
+let wakeLock = null;
+async function acquireWakeLock() {
+  try {
+    if ("wakeLock" in navigator) wakeLock = await navigator.wakeLock.request("screen");
+  } catch { /* ignore */ }
+}
+function releaseWakeLock() {
+  if (wakeLock) { wakeLock.release().catch(() => {}); wakeLock = null; }
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && engine && engine.running && !engine.paused) {
+    acquireWakeLock();
+  }
+});
+
+/* ---------- Timeline ---------- */
+function buildTimeline(p) {
+  const segs = [];
+  if (p.countdown > 0) segs.push({ phase: "ready", dur: p.countdown, label: "Get Ready" });
+  for (let s = 1; s <= p.sets; s++) {
+    for (let r = 1; r <= p.reps; r++) {
+      segs.push({ phase: "work", dur: p.workSec, label: "Work", rep: r, set: s });
+      if (r < p.reps && p.restSec > 0)
+        segs.push({ phase: "rest", dur: p.restSec, label: "Rest", rep: r, set: s });
+    }
+    if (s < p.sets && p.setRestSec > 0)
+      segs.push({ phase: "setrest", dur: p.setRestSec, label: "Set Rest", set: s });
+  }
+  segs.push({ phase: "done", dur: 0, label: "Done" });
+  return segs;
+}
+
+/* ---------- Run engine ---------- */
+const runStage = document.getElementById("runStage");
+const phaseLabel = document.getElementById("phaseLabel");
+const bigTime = document.getElementById("bigTime");
+const progressEl = document.getElementById("progress");
+const nextUpEl = document.getElementById("nextUp");
+const pauseBtn = document.getElementById("pauseBtn");
+
+let engine = null;
+let current = null; // current preset
+
+function openRun(p) {
+  current = p;
+  localStorage.setItem(LAST_KEY, p.id);
+  initAudio(); // unlock audio on this user gesture
+  startEngine(p);
+  acquireWakeLock();
+  show("run");
+}
+
+function startEngine(p) {
+  const segs = buildTimeline(p);
+  engine = {
+    preset: p,
+    segs,
+    idx: 0,
+    endAt: 0,
+    remaining: 0,   // ms remaining when paused
+    lastSec: -1,
+    running: true,
+    paused: false,
+    tick: null,
+  };
+  enterSegment(0, true);
+  engine.tick = setInterval(loop, 100);
+  pauseBtn.textContent = "Pause";
+}
+
+function enterSegment(idx, first) {
+  const seg = engine.segs[idx];
+  engine.idx = idx;
+  engine.lastSec = -1;
+
+  runStage.className = "run-stage " + seg.phase;
+  phaseLabel.textContent = seg.label;
+
+  if (seg.phase === "done") {
+    bigTime.textContent = "✓";
+    progressEl.textContent = "Workout complete";
+    nextUpEl.textContent = "";
+    beepDone();
+    finish();
+    return;
+  }
+
+  // progress text
+  const P = engine.preset;
+  if (seg.phase === "ready") progressEl.textContent = P.sets > 1 ? `Set 1/${P.sets}` : "Starting…";
+  else if (seg.phase === "setrest") progressEl.textContent = `Set ${seg.set}/${P.sets} done`;
+  else progressEl.textContent = `Rep ${seg.rep}/${P.reps} · Set ${seg.set}/${P.sets}`;
+
+  // next up
+  const nxt = engine.segs[idx + 1];
+  nextUpEl.textContent = nxt && nxt.phase !== "done"
+    ? `Next: ${nxt.label}${nxt.dur ? " " + nxt.dur + "s" : ""}`
+    : (nxt && nxt.phase === "done" ? "Last one!" : "");
+
+  // entry tone (skip on the very first countdown so it isn't jarring)
+  if (!first || seg.phase !== "ready") {
+    if (seg.phase === "work") beepWork();
+    else if (seg.phase === "rest" || seg.phase === "setrest") beepRest();
+  }
+
+  engine.endAt = performance.now() + seg.dur * 1000;
+  bigTime.textContent = seg.dur;
+}
+
+function loop() {
+  if (!engine || !engine.running || engine.paused) return;
+  const remainMs = engine.endAt - performance.now();
+  const secs = Math.max(0, Math.ceil(remainMs / 1000));
+
+  if (secs !== engine.lastSec) {
+    engine.lastSec = secs;
+    bigTime.textContent = secs;
+    if (secs >= 1 && secs <= 3) beepCountdown();
+  }
+
+  if (remainMs <= 0) {
+    enterSegment(engine.idx + 1, false);
+  }
+}
+
+function pauseToggle() {
+  if (!engine || !engine.running) return;
+  if (!engine.paused) {
+    engine.paused = true;
+    engine.remaining = engine.endAt - performance.now();
+    runStage.classList.add("paused");
+    pauseBtn.textContent = "Resume";
+    releaseWakeLock();
+  } else {
+    engine.paused = false;
+    engine.endAt = performance.now() + engine.remaining;
+    runStage.classList.remove("paused");
+    pauseBtn.textContent = "Pause";
+    initAudio();
+    acquireWakeLock();
+  }
+}
+
+function finish() {
+  if (engine) { clearInterval(engine.tick); engine.running = false; }
+  releaseWakeLock();
+  pauseBtn.textContent = "Done";
+}
+
+function stopRun() {
+  if (engine) { clearInterval(engine.tick); engine.running = false; }
+  releaseWakeLock();
+  renderHome();
+  show("home");
+}
+
+pauseBtn.addEventListener("click", () => {
+  if (engine && !engine.running) { stopRun(); return; } // "Done" acts as back
+  pauseToggle();
+});
+document.getElementById("stopBtn").addEventListener("click", stopRun);
+
+/* ---------- Boot ---------- */
+renderHome();
+show("home");
+
+
+
+</script>
+</body>
+</html>
