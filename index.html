@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Tabata</title>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tabata" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HOME -->
+  <section id="home" class="view">
+    <header class="top">
+      <h1>Tabata</h1>
+      <button id="newBtn" class="btn btn-accent">＋ New</button>
+    </header>
+    <ul id="presetList" class="preset-list"></ul>
+    <p id="emptyHint" class="hint hidden">No workouts yet. Tap <b>＋ New</b> to create one.</p>
+  </section>
+
+  <!-- EDITOR -->
+  <section id="editor" class="view hidden">
+    <header class="top">
+      <button id="editorBack" class="btn btn-ghost">‹ Back</button>
+      <h2 id="editorTitle">New workout</h2>
+      <button id="deleteBtn" class="btn btn-ghost danger hidden">Delete</button>
+    </header>
+    <label class="field">
+      <span>Name</span>
+      <input id="nameInput" type="text" inputmode="text" placeholder="My workout" autocomplete="off" />
+    </label>
+    <div id="steppers" class="steppers"></div>
+    <button id="saveBtn" class="btn btn-accent big">Save</button>
+  </section>
+
+  <!-- RUN -->
+  <section id="run" class="view hidden">
+    <div id="runStage" class="run-stage">
+      <div id="phaseLabel" class="phase-label">Get Ready</div>
+      <div id="bigTime" class="big-time">0</div>
+      <div id="progress" class="progress">Rep 0/0 · Set 0/0</div>
+      <div id="nextUp" class="next-up"></div>
+    </div>
+    <div class="run-controls">
+      <button id="stopBtn" class="btn btn-ghost">Stop</button>
+      <button id="pauseBtn" class="btn btn-accent big">Pause</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
