@@ -1,4 +1,4 @@
-const CACHE = "tabata-v1";
+const CACHE = "tabata-v2";
 const ASSETS = [
   "./",
   "./index.html",

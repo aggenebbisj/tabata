@@ -32,8 +32,19 @@ function loadPresets() {
     return [];
   }
 }
+let storageOk = true;
 function savePresets(list) {
-  localStorage.setItem(PRESETS_KEY, JSON.stringify(list));
+  try {
+    localStorage.setItem(PRESETS_KEY, JSON.stringify(list));
+    // Read back to confirm the write actually stuck (some iOS modes silently drop it).
+    storageOk = localStorage.getItem(PRESETS_KEY) === JSON.stringify(list);
+  } catch (e) {
+    storageOk = false;
+  }
+  if (!storageOk) {
+    alert("⚠️ Couldn't save — this browser is blocking site storage.\n\nIn Chrome iOS: Settings ▸ Content Settings ▸ Block Cookies must be OFF, and don't use Incognito. Safari usually works.");
+  }
+  updateDiag();
 }
 function newId() {
   return "p" + Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
@@ -196,15 +207,37 @@ deleteBtn.addEventListener("click", () => {
 
 /* ---------- Audio (Web Audio, generated tones) ---------- */
 let audioCtx = null;
+let audioReady = false;
 function initAudio() {
+  // Tell iOS this is playback audio so it isn't gated like a notification.
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = "playback";
+  } catch { /* not supported */ }
   if (!audioCtx) {
     const AC = window.AudioContext || window.webkitAudioContext;
     if (AC) audioCtx = new AC();
   }
   if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+  // Kick the context awake with a silent buffer inside the user gesture (iOS unlock).
+  if (audioCtx && !audioReady) {
+    try {
+      const buf = audioCtx.createBuffer(1, 1, 22050);
+      const src = audioCtx.createBufferSource();
+      src.buffer = buf;
+      src.connect(audioCtx.destination);
+      src.start(0);
+      audioReady = true;
+    } catch { /* ignore */ }
+  }
+  return audioCtx && audioCtx.state === "running";
 }
-function tone(freq, durMs, when = 0, gain = 0.25) {
+// Unlock on the very first touch anywhere, so audio is armed before the run screen.
+["pointerdown", "touchend", "click"].forEach((ev) =>
+  document.addEventListener(ev, () => initAudio(), { once: false, passive: true })
+);
+function tone(freq, durMs, when = 0, gain = 0.4) {
   if (!audioCtx) return;
+  if (audioCtx.state === "suspended") audioCtx.resume();
   const t0 = audioCtx.currentTime + when;
   const osc = audioCtx.createOscillator();
   const g = audioCtx.createGain();
@@ -386,8 +419,51 @@ pauseBtn.addEventListener("click", () => {
 });
 document.getElementById("stopBtn").addEventListener("click", stopRun);
 
+/* ---------- Diagnostics (on-device probe) ---------- */
+const diagEl = document.getElementById("diag");
+function updateDiag() {
+  if (!diagEl) return;
+  let opens = 0;
+  try {
+    opens = parseInt(localStorage.getItem("tabata.opens") || "0", 10) || 0;
+  } catch { /* blocked */ }
+  if (!storageOk) {
+    diagEl.textContent = "⚠️ Storage blocked — workouts won't be saved in this browser";
+    diagEl.className = "diag bad";
+  } else {
+    diagEl.textContent = `Storage OK · ${presets.length} saved · opened ${opens}×`;
+    diagEl.className = "diag";
+  }
+}
+function bumpOpenCounter() {
+  try {
+    const n = (parseInt(localStorage.getItem("tabata.opens") || "0", 10) || 0) + 1;
+    localStorage.setItem("tabata.opens", String(n));
+    storageOk = localStorage.getItem("tabata.opens") === String(n);
+  } catch {
+    storageOk = false;
+  }
+}
+
+const testBtn = document.getElementById("testSound");
+if (testBtn) {
+  testBtn.addEventListener("click", () => {
+    const running = initAudio();
+    beepWork();
+    setTimeout(beepCountdown, 300);
+    if (!running) {
+      setTimeout(() => {
+        if (!audioCtx || audioCtx.state !== "running")
+          alert("🔇 Audio is blocked. Check the side ring/silent switch, turn media volume up, or try Safari.");
+      }, 200);
+    }
+  });
+}
+
 /* ---------- Boot ---------- */
+bumpOpenCounter();
 renderHome();
+updateDiag();
 show("home");
 
 if ("serviceWorker" in navigator) {
